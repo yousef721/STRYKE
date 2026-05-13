@@ -1,9 +1,8 @@
-using System;
-
 namespace STRYKE.DAL.Entity;
 
-public class Size
+public class Size : BaseEntity
 {
     public int SizeId { get; set; }
-    public string Name { get; set; }
+    public string? Name { get; set; }
+    public ICollection<ProductVariant> ProductVariants { get; set; } = null!;
 }

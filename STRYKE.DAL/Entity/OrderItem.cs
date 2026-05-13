@@ -1,17 +1,12 @@
-using System;
-
 namespace STRYKE.DAL.Entity;
 
-public class OrderItem
+public class OrderItem : BaseEntity
 {
     public int OrderItemId { get; set; }
-
     public int OrderId { get; set; }
     public int VariantId { get; set; }
-
     public decimal Price { get; set; }
     public int Quantity { get; set; }
-
-    public Order Order { get; set; }
-    public ProductVariant Variant { get; set; }
+    public Order Order { get; set; } = null!;
+    public ProductVariant ProductVariant { get; set; } = null!;
 }

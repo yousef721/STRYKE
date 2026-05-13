@@ -1,0 +1,7 @@
+namespace STRYKE.DAL.Enum;
+
+public enum Gender
+{
+    Male,
+    Female
+}
