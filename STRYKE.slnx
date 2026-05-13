@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="STRYKE.BLL/STRYKE.BLL.csproj" />
+  <Project Path="STRYKE.DAL/STRYKE.DAL.csproj" />
+  <Project Path="STRYKE/STRYKE.Web.csproj" />
+</Solution>

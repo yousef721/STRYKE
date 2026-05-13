@@ -1,0 +1,123 @@
+# Build results
+bin/
+obj/
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Ww][Ii][Nn]32/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+# Visual Studio cache/options
+.vs/
+.vscode/
+.idea/
+
+# Rider IDE
+.idea/
+*.sln.iml
+*.DotSettings.user
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.vcxproj.filters
+*.vcxproj.user
+
+# Visual Studio Code
+.vscode/
+*.code-workspace
+
+# NuGet
+*.nupkg
+*.snupkg
+NugetPackages/
+nuget.config
+.nuget/
+
+# Package Lock files
+package-lock.json
+yarn.lock
+
+# Roslyn analyzers
+.vs/
+
+# BenchmarkDotNet
+BenchmarkDotNet.Artifacts/
+
+# Test Results
+TestResults/
+*.trx
+*.coverage
+
+# Coverage reports
+OpenCover/
+CodeCoverage/
+
+# Application Insights
+ApplicationInsights.config
+
+# Local user-specific files
+appsettings.local.json
+appsettings.Local.json
+*.local.json
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# OS files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# Node modules (if using npm for frontend)
+node_modules/
+dist/
+build/
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.backup
+
+# Visual Studio extension development
+SDKs/
+
+# Publishing profiles
+PublishProfiles/
+
+# SQL Server files
+*.mdf
+*.ldf
+*.ndf
+
+# Deployment temp files
+publish/
+PublishOutput/
+
+# Local database
+*.db
+*.db-shm
+*.db-wal
+
+# Rider generated files
+.idea_modules/
+
+# Mac
+.DS_Store
