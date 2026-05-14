@@ -36,37 +36,11 @@ public class CustomerConfig : IEntityTypeConfiguration<Customer>
         builder.Property(x => x.IsActive)
             .HasDefaultValue(true);
 
-        // Indexes (important for performance)
+        // Indexes
         builder.HasIndex(x => x.Email)
             .IsUnique();
 
         builder.HasIndex(x => x.UserName)
             .IsUnique();
-
-        // Relations
-        builder.HasMany(x => x.Addresses)
-            .WithOne(x => x.Customer)
-            .HasForeignKey(x => x.CustomerId)
-            .OnDelete(DeleteBehavior.Cascade);
-
-        builder.HasMany(x => x.Orders)
-            .WithOne(x => x.Customer)
-            .HasForeignKey(x => x.CustomerId)
-            .OnDelete(DeleteBehavior.Restrict);
-
-        builder.HasMany(x => x.Reviews)
-            .WithOne(x => x.Customer)
-            .HasForeignKey(x => x.CustomerId)
-            .OnDelete(DeleteBehavior.SetNull);
-
-        builder.HasOne(x => x.Cart)
-            .WithOne(x => x.Customer)
-            .HasForeignKey<Cart>(x => x.CustomerId)
-            .OnDelete(DeleteBehavior.Cascade);
-
-        builder.HasOne(x => x.Wishlist)
-            .WithOne(x => x.Customer)
-            .HasForeignKey<Wishlist>(x => x.CustomerId)
-            .OnDelete(DeleteBehavior.Cascade);
     }
 }

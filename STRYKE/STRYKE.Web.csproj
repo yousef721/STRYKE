@@ -13,4 +13,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="../STRYKE.BLL/STRYKE.BLL.csproj" />
+  </ItemGroup>
+
 </Project>

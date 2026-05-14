@@ -14,7 +14,13 @@ public class ProductImageConfig : IEntityTypeConfiguration<ProductImage>
         builder.Property(x => x.IsPrimary)
             .HasDefaultValue(false);
 
-        // Indexes (important for performance)
+        // Relations
+        builder.HasOne(x => x.Product)
+            .WithMany(x => x.Images)
+            .HasForeignKey(x => x.ProductId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        // Indexes
         builder.HasIndex(x => x.ProductId);
     }
 }

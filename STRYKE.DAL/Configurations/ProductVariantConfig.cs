@@ -20,14 +20,12 @@ public class ProductVariantConfig : IEntityTypeConfiguration<ProductVariant>
         builder.Property(x => x.StockQuantity)
             .IsRequired();
 
-        // Indexes (important for performance)
-        builder.HasIndex(x => x.ProductId);
-        builder.HasIndex(x => x.SizeId);
-        builder.HasIndex(x => x.ColorId);
-        builder.HasIndex(x => x.SKU)
-            .IsUnique();
-
         // Relations
+        builder.HasOne(x => x.Product)
+            .WithMany(x => x.Variants)
+            .HasForeignKey(x => x.ProductId)
+            .OnDelete(DeleteBehavior.Cascade);
+
         builder.HasOne(x => x.Size)
             .WithMany(x => x.ProductVariants)
             .HasForeignKey(x => x.SizeId)
@@ -38,7 +36,13 @@ public class ProductVariantConfig : IEntityTypeConfiguration<ProductVariant>
             .HasForeignKey(x => x.ColorId)
             .OnDelete(DeleteBehavior.Restrict);
 
-        // Business Rule
+        // Indexes
+        builder.HasIndex(x => x.ProductId);
+        builder.HasIndex(x => x.SizeId);
+        builder.HasIndex(x => x.ColorId);
+        builder.HasIndex(x => x.SKU)
+            .IsUnique();
+
         builder.HasIndex(x => new { x.ProductId, x.SizeId, x.ColorId })
             .IsUnique();
     }

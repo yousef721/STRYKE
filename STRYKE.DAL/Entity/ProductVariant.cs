@@ -13,6 +13,6 @@ public class ProductVariant : BaseEntity
     public Product Product { get; set; } = null!;
     public Size Size { get; set; } = null!;
     public Color Color { get; set; } = null!;
-    public ICollection<OrderItem> OrderItems = null!;
-    public ICollection<CartItem> CartItems = null!;
+    public ICollection<OrderItem> OrderItems { get; set; } = null!;
+    public ICollection<CartItem> CartItems { get; set; } = null!;
 }

@@ -15,15 +15,20 @@ public class OrderItemConfig : IEntityTypeConfiguration<OrderItem>
 
         builder.Property(x => x.Quantity)
             .IsRequired();
-        
-        // Indexes
-        builder.HasIndex(x => x.OrderId);
-        builder.HasIndex(x => x.VariantId);
 
-        // Relations
-        builder.HasOne(x => x.Variant)
+        // Relation
+        builder.HasOne(x => x.Order)
             .WithMany(x => x.OrderItems)
-            .HasForeignKey(x => x.VariantId)
+            .HasForeignKey(x => x.OrderId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        builder.HasOne(x => x.ProductVariant)
+            .WithMany(x => x.OrderItems)
+            .HasForeignKey(x => x.ProductVariantId)
             .OnDelete(DeleteBehavior.Restrict);
+            
+        //Index
+        builder.HasIndex(x => x.OrderId);
+        builder.HasIndex(x => x.ProductVariantId);
     }
 }

@@ -23,7 +23,13 @@ public class AddressConfig : IEntityTypeConfiguration<Address>
             .IsRequired()
             .HasMaxLength(100);
 
-        // Index (performance improvement)
+        // Relations
+        builder.HasOne(x => x.Customer)
+            .WithMany(x => x.Addresses)
+            .HasForeignKey(x => x.CustomerId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        // Indexes
         builder.HasIndex(x => x.CustomerId);
     }
 }

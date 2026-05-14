@@ -20,12 +20,6 @@ public class ProductConfig : IEntityTypeConfiguration<Product>
         builder.Property(x => x.Status)
             .IsRequired();
 
-        // Indexes (important for performance)
-        builder.HasIndex(x => x.BrandId);
-        builder.HasIndex(x => x.CategoryId);
-        builder.HasIndex(x => x.Slug)
-            .IsUnique();
-
         // Relations
         builder.HasOne(x => x.Brand)
             .WithMany(x => x.Products)
@@ -51,5 +45,12 @@ public class ProductConfig : IEntityTypeConfiguration<Product>
             .WithOne(x => x.Product)
             .HasForeignKey(x => x.ProductId)
             .OnDelete(DeleteBehavior.Cascade);
+        
+        // Indexes
+        builder.HasIndex(x => x.BrandId);
+        builder.HasIndex(x => x.CategoryId);
+        builder.HasIndex(x => x.Slug)
+            .IsUnique();
+
     }
 }

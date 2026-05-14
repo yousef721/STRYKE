@@ -15,34 +15,31 @@ public class OrderConfig : IEntityTypeConfiguration<Order>
             .HasColumnType("decimal(18,2)")
             .IsRequired();
 
-        // Indexes (important for performance)
-        builder.HasIndex(x => x.CustomerId);
-        builder.HasIndex(x => x.AddressId);
-        builder.HasIndex(x => x.CouponId);
-        builder.HasIndex(x => x.Status);
+        // Relation
+        builder.HasOne(x => x.Customer)
+            .WithMany(x => x.Orders)
+            .HasForeignKey(x => x.CustomerId)
+            .OnDelete(DeleteBehavior.Restrict);
 
-        // Relations
         builder.HasOne(x => x.Address)
             .WithMany(x => x.Orders)
             .HasForeignKey(x => x.AddressId)
             .OnDelete(DeleteBehavior.Restrict);
-
 
         builder.HasOne(x => x.Coupon)
             .WithMany(x => x.Orders)
             .HasForeignKey(x => x.CouponId)
             .OnDelete(DeleteBehavior.SetNull);
 
-
         builder.HasMany(x => x.OrderItems)
             .WithOne(x => x.Order)
             .HasForeignKey(x => x.OrderId)
             .OnDelete(DeleteBehavior.Cascade);
 
-
-        builder.HasOne(x => x.Payment)
-            .WithOne(x => x.Order)
-            .HasForeignKey<Payment>(x => x.OrderId)
-            .OnDelete(DeleteBehavior.Cascade);
+        // Indexes
+        builder.HasIndex(x => x.CustomerId);
+        builder.HasIndex(x => x.AddressId);
+        builder.HasIndex(x => x.CouponId);
+        builder.HasIndex(x => x.Status);
     }
 }

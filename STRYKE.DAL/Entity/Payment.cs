@@ -8,6 +8,6 @@ public class Payment : BaseEntity
     public PaymentMethod Method { get; set; }
     public decimal Amount { get; set; }
     public PaymentStatus Status { get; set; }
-    public DateTime PaidAt { get; set; }
+    public DateTime? PaidAt { get; set; }
     public Order Order { get; set; } = null!;
 }

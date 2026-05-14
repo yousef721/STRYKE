@@ -13,14 +13,21 @@ public class CartItemConfig : IEntityTypeConfiguration<CartItem>
             .IsRequired();
 
         // Relations
+        builder.HasOne(x => x.Cart)
+            .WithMany(x => x.CartItems)
+            .HasForeignKey(x => x.CartId)
+            .OnDelete(DeleteBehavior.Cascade);
+
         builder.HasOne(x => x.Variant)
             .WithMany(x => x.CartItems)
             .HasForeignKey(x => x.ProductVariantId)
             .OnDelete(DeleteBehavior.Restrict);
 
-        // Indexes (important for performance)
+        // Indexes
         builder.HasIndex(x => x.CartId);
         builder.HasIndex(x => x.ProductVariantId);
+        builder.HasIndex(x => new { x.CartId, x.ProductVariantId })
+            .IsUnique();
     }
 
 }

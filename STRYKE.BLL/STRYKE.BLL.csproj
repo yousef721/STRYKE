@@ -12,4 +12,8 @@
     <Folder Include="Services/Interface/" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="../STRYKE.DAL/STRYKE.DAL.csproj" />
+  </ItemGroup>
+
 </Project>
