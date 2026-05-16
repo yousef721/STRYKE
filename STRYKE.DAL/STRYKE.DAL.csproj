@@ -10,9 +10,6 @@
     <Folder Include="Database/" />
     <Folder Include="Enum/" />
     <Folder Include="Global/" />
-    <Folder Include="Repository/" />
-    <Folder Include="Repository/Implementation/" />
-    <Folder Include="Repository/Interface/" />
   </ItemGroup>
 
   <ItemGroup>
