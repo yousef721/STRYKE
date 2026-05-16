@@ -20,5 +20,14 @@ public class ColorConfig : IEntityTypeConfiguration<Color>
 
         builder.HasIndex(x => x.HexCode)
             .IsUnique();
+        
+        // Constraints
+        builder.ToTable(t =>
+        {
+            // Color name cannot be empty or spaces
+            t.HasCheckConstraint(
+                "chk_color_name_not_empty",
+                "TRIM(Name) <> ''");
+        });
     }
 }

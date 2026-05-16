@@ -17,5 +17,14 @@ public class BrandConfig : IEntityTypeConfiguration<Brand>
         // Indexes
         builder.HasIndex(x => x.Name)
             .IsUnique();
+
+        
+        // Constraints
+        builder.ToTable("Brands", t =>
+        {
+            t.HasCheckConstraint(
+                "chk_brand_name_not_empty",
+                "TRIM(Name) <> ''");
+        });
     }
 }

@@ -1,5 +1,3 @@
-using System;
-
 namespace STRYKE.DAL.Configurations;
 
 public class CartConfig : IEntityTypeConfiguration<Cart>
@@ -8,15 +6,19 @@ public class CartConfig : IEntityTypeConfiguration<Cart>
     {
         builder.HasKey(x => x.CartId);
         
+        // Total Participation: Cart MUST belong to a Customer
+        builder.Property(x => x.CustomerId)
+            .IsRequired();
+
         // Relations
+        // Total Participation: Cart MUST belong to a Customer
         builder.HasOne(x => x.Customer)
             .WithOne(x => x.Cart)
             .HasForeignKey<Cart>(x => x.CustomerId)
             .OnDelete(DeleteBehavior.Cascade);
 
-        builder.HasMany(x => x.CartItems)
-            .WithOne(x => x.Cart)
-            .HasForeignKey(x => x.CartId)
-            .OnDelete(DeleteBehavior.Cascade);
+        // Indexes
+        builder.HasIndex(x => x.CustomerId);
+
     }
 }

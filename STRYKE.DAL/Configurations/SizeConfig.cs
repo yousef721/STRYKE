@@ -1,5 +1,3 @@
-using System;
-
 namespace STRYKE.DAL.Configurations;
 
 public class SizeConfig : IEntityTypeConfiguration<Size>
@@ -16,5 +14,13 @@ public class SizeConfig : IEntityTypeConfiguration<Size>
         // Indexes
         builder.HasIndex(x => x.Name)
             .IsUnique();
+            
+        // Constraints
+        builder.ToTable(t =>
+        {
+            t.HasCheckConstraint(
+                "chk_size_name_not_empty",
+                "TRIM(Name) <> ''");
+        });
     }
 }

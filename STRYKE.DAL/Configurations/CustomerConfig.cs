@@ -42,5 +42,28 @@ public class CustomerConfig : IEntityTypeConfiguration<Customer>
 
         builder.HasIndex(x => x.UserName)
             .IsUnique();
+
+        builder.HasIndex(x => x.IsActive);
+
+        // Constraints
+        builder.ToTable(t =>
+        {
+            t.HasCheckConstraint(
+                "chk_customer_first_name_not_empty",
+                "TRIM(FirstName) <> ''");
+
+            t.HasCheckConstraint(
+                "chk_customer_last_name_not_empty",
+                "TRIM(LastName) <> ''");
+
+            t.HasCheckConstraint(
+                "chk_customer_username_not_empty",
+                "TRIM(UserName) <> ''");
+
+            t.HasCheckConstraint(
+                "chk_customer_email_valid",
+                "Email LIKE '%@%.%'");
+        });
+
     }
 }

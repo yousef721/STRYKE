@@ -7,6 +7,6 @@ public class Shipment : BaseEntity
     public string? TrackingNumber { get; set; }
     public string? Carrier { get; set; }
     public ShippingStatus ShippingStatus { get; set; }
-    public DateTime? EstimatedDelivery { get; set; }
+    public DateTime EstimatedDelivery { get; set; }
     public Order Order { get; set; } = null!;
 }

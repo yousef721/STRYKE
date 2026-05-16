@@ -14,4 +14,5 @@ public class Product : BaseEntity
     public ICollection<ProductVariant> Variants { get; set; } = null!;
     public ICollection<ProductImage> Images { get; set; } = null!;
     public ICollection<Review> Reviews { get; set; } = null!;
+    public ICollection<WishlistItem> WishlistItems { get; set; } = null!;
 }

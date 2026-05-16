@@ -24,9 +24,12 @@ public class AddressConfig : IEntityTypeConfiguration<Address>
             .HasMaxLength(100);
 
         // Relations
+        
+        // Total Participation: Address MUST belong to a Customer
         builder.HasOne(x => x.Customer)
             .WithMany(x => x.Addresses)
             .HasForeignKey(x => x.CustomerId)
+            .IsRequired()
             .OnDelete(DeleteBehavior.Cascade);
 
         // Indexes

@@ -6,18 +6,19 @@ public class WishlistConfig : IEntityTypeConfiguration<Wishlist>
     {
         builder.HasKey(x => x.WishlistId);
 
+        // Partial Participation: Customer MAY or MAY NOT have a Wishlist
+        builder.Property(x => x.CustomerId)
+            .IsRequired(false);
+
         // Relations
+        // Partial Participation: Customer MAY or MAY NOT have a Wishlist
+        // Wishlist is created on-demand, not auto-created with customer
         builder.HasOne(x => x.Customer)
             .WithOne(x => x.Wishlist)
             .HasForeignKey<Wishlist>(x => x.CustomerId)
             .OnDelete(DeleteBehavior.Cascade);
 
-        builder.HasMany(x => x.WishlistItems)
-            .WithOne(x => x.Wishlist)
-            .HasForeignKey(x => x.WishlistId)
-            .OnDelete(DeleteBehavior.Cascade);
-
-        builder.HasIndex(x => x.CustomerId)
-            .IsUnique();
+        // Indexes
+        builder.HasIndex(x => x.CustomerId);
     }
 }
