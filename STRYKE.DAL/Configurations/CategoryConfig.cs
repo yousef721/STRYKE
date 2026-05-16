@@ -33,8 +33,5 @@ public class CategoryConfig : IEntityTypeConfiguration<Category>
                 "(HexCode LIKE '#[0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f]' " +
                 "OR HexCode LIKE '#[0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f]')");
         });
-  
-        builder.HasCheckConstraint("chk_color_hex_format",
-        "HexCode IS NULL OR (HexCode LIKE '#%' AND (LEN(HexCode) = 7 OR LEN(HexCode) = 9))");
     }
 }
