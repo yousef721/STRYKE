@@ -1,0 +1,36 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "STRYKE.DAL", "STRYKE.DAL\STRYKE.DAL.csproj", "{BBADAE9E-8605-50CC-2883-86BAA3A8EB7D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "STRYKE.Web", "STRYKE\STRYKE.Web.csproj", "{CA8A3D00-42C6-DC5A-A143-939CFB88922F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "STRYKE.BLL", "STRYKE.BLL\STRYKE.BLL.csproj", "{AC8E611A-B0D1-D17C-5862-F262572313E7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BBADAE9E-8605-50CC-2883-86BAA3A8EB7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBADAE9E-8605-50CC-2883-86BAA3A8EB7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBADAE9E-8605-50CC-2883-86BAA3A8EB7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BBADAE9E-8605-50CC-2883-86BAA3A8EB7D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA8A3D00-42C6-DC5A-A143-939CFB88922F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA8A3D00-42C6-DC5A-A143-939CFB88922F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA8A3D00-42C6-DC5A-A143-939CFB88922F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA8A3D00-42C6-DC5A-A143-939CFB88922F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC8E611A-B0D1-D17C-5862-F262572313E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC8E611A-B0D1-D17C-5862-F262572313E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC8E611A-B0D1-D17C-5862-F262572313E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC8E611A-B0D1-D17C-5862-F262572313E7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {354D772A-9A5E-41E9-9316-F1215E99CE57}
+	EndGlobalSection
+EndGlobal

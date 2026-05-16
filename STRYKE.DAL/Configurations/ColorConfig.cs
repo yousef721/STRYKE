@@ -28,6 +28,13 @@ public class ColorConfig : IEntityTypeConfiguration<Color>
             t.HasCheckConstraint(
                 "chk_color_name_not_empty",
                 "TRIM(Name) <> ''");
+                
+            // Validate hex code format: #RRGGBB or #RRGGBBAA
+            t.HasCheckConstraint(
+                "chk_color_hex_format",
+                "HexCode IS NULL OR " +
+                "(HexCode LIKE '#[0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f]' " +
+                "OR HexCode LIKE '#[0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f]')");
         });
     }
 }

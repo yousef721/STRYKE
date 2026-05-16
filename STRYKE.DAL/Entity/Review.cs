@@ -3,7 +3,7 @@ namespace STRYKE.DAL.Entity;
 public class Review : BaseEntity
 {
     public int ReviewId { get; set; }
-    public int CustomerId { get; set; }
+    public int? CustomerId { get; set; } // Partial Participation - optional
     public int ProductId { get; set; }
     public int Rating { get; set; }
     public string? Comment { get; set; }
