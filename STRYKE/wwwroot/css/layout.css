@@ -1,0 +1,333 @@
+/* ─── NAVBAR ─── */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    height: 64px;
+}
+
+.navbar__logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.navbar__logo svg {
+    color: var(--red);
+}
+
+.navbar__nav {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+.navbar__nav a {
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--white-dim);
+    transition: color 0.2s;
+    position: relative;
+}
+
+.navbar__nav a:hover,
+.navbar__nav a.active {
+    color: var(--white);
+}
+
+.navbar__nav a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--red);
+}
+
+.navbar__nav a.has-dropdown::after {
+    content: ' ▾';
+    font-size: 10px;
+}
+
+.navbar__actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.navbar__actions button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--white-dim);
+    transition: color 0.2s;
+    padding: 4px;
+    position: relative;
+}
+
+.navbar__actions button:hover {
+    color: var(--white);
+}
+
+.cart-badge {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    background: var(--red);
+    color: var(--white);
+    font-size: 10px;
+    font-weight: 700;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ─── NEWSLETTER ─── */
+.newsletter {
+    background: var(--black);
+    padding: 48px 80px;
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.newsletter__icon {
+    flex-shrink: 0;
+    width: 52px;
+    height: 52px;
+    border: 2px solid var(--red);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--red);
+}
+
+.newsletter__text h3 {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+}
+
+.newsletter__text p {
+    font-size: 13px;
+    color: var(--white-dim);
+}
+
+.newsletter__form {
+    flex: 1;
+    display: flex;
+    gap: 0;
+    max-width: 480px;
+}
+
+.newsletter__input {
+    flex: 1;
+    padding: 14px 20px;
+    background: var(--black-3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-right: none;
+    color: var(--white);
+    font-family: var(--font-body);
+    font-size: 14px;
+    outline: none;
+}
+
+.newsletter__input::placeholder {
+    color: var(--gray-light);
+}
+
+.newsletter__input:focus {
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.newsletter__submit {
+    padding: 14px 28px;
+    background: var(--red);
+    color: var(--white);
+    border: none;
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.newsletter__submit:hover {
+    background: var(--red-dark);
+}
+
+/* ─── FOOTER ─── */
+.footer {
+    background: var(--black-2);
+    padding: 60px 80px 0;
+}
+
+.footer__top {
+    display: grid;
+    grid-template-columns: 280px repeat(4, 1fr);
+    gap: 40px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.footer__brand p {
+    font-size: 13px;
+    color: var(--white-dim);
+    margin: 16px 0 24px;
+    line-height: 1.7;
+}
+
+.footer__socials {
+    display: flex;
+    gap: 14px;
+}
+
+.footer__socials a {
+    width: 34px;
+    height: 34px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white-dim);
+    font-size: 13px;
+    transition: all 0.2s;
+}
+
+.footer__socials a:hover {
+    border-color: var(--red);
+    color: var(--red);
+}
+
+.footer__col h5 {
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    color: var(--white);
+}
+
+.footer__col ul li {
+    margin-bottom: 10px;
+}
+
+.footer__col ul li a {
+    font-size: 13px;
+    color: var(--white-dim);
+    transition: color 0.2s;
+}
+
+.footer__col ul li a:hover {
+    color: var(--white);
+}
+
+.footer__col address {
+    font-style: normal;
+    font-size: 13px;
+    color: var(--white-dim);
+    line-height: 1.8;
+}
+
+.footer__payments {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 16px;
+}
+
+.payment-badge {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 4px 10px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: var(--white-dim);
+    border-radius: 2px;
+}
+
+.footer__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0;
+}
+
+.footer__bottom p {
+    font-size: 12px;
+    color: var(--gray-light);
+}
+
+.footer__bottom-links {
+    display: flex;
+    gap: 24px;
+}
+
+.footer__bottom-links a {
+    font-size: 12px;
+    color: var(--gray-light);
+    transition: color 0.2s;
+}
+
+.footer__bottom-links a:hover {
+    color: var(--white);
+}
+
+@media (max-width: 1024px) {
+    .footer__top {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 0 20px;
+    }
+
+    .navbar__nav {
+        display: none;
+    }
+
+    .newsletter {
+        flex-direction: column;
+        padding: 40px 24px;
+        gap: 24px;
+    }
+
+    .footer {
+        padding: 40px 24px 0;
+    }
+
+    .footer__top {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+}

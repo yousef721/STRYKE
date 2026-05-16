@@ -1,0 +1,62 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--black);
+    color: var(--white);
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+ul {
+    list-style: none;
+}
+
+.site-main {
+    min-height: calc(100vh - 64px);
+}
+
+.page-content {
+    padding: 80px 60px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.page-content h1 {
+    font-family: var(--font-display);
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 24px;
+}
+
+.page-content p {
+    color: var(--white-dim);
+    margin-bottom: 16px;
+}
+
+@media (max-width: 768px) {
+    .page-content {
+        padding: 60px 24px;
+    }
+}

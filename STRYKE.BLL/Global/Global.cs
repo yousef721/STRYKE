@@ -1,0 +1,1 @@
+global using STRYKE.BLL.Services.Interface;

@@ -1,8 +1,210 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Home";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+@section Styles {
+    <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
+}
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero__content">
+        <p class="hero__tag">Performance Sportswear</p>
+        <h1 class="hero__title">
+            Engineered<br>
+            For Your<br>
+            <em>Greatest</em>
+        </h1>
+        <p class="hero__sub">Premium Sportswear Built for Performance and Style.</p>
+        <div class="hero__actions">
+            <a asp-controller="Shop" asp-action="Index" class="btn btn-primary">Shop Now</a>
+            <a asp-controller="About" asp-action="Index" class="btn btn-outline">Explore</a>
+        </div>
+    </div>
+    <img class="hero__image" src="~/Images/Home/hero-athlete.png" alt="STRYK Athlete" />
+</section>
+
+<!-- TRUST STRIP -->
+<div class="trust-strip">
+    <div class="trust-item">
+        <span class="trust-icon">
+            <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="m16 8 5 0M16 12l5 0M1 8h15M7 16l-3 5M17 16l3 5"/></svg>
+        </span>
+        <div>
+            <h4>Free Shipping</h4>
+            <p>On orders over $75</p>
+        </div>
+    </div>
+    <div class="trust-item">
+        <span class="trust-icon">
+            <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 18 0 9 9 0 0 0-18 0"/><path d="M12 8v4l3 3"/></svg>
+        </span>
+        <div>
+            <h4>Easy Returns</h4>
+            <p>30 day return policy</p>
+        </div>
+    </div>
+    <div class="trust-item">
+        <span class="trust-icon">
+            <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+        </span>
+        <div>
+            <h4>Secure Payment</h4>
+            <p>100% secure checkout</p>
+        </div>
+    </div>
+    <div class="trust-item">
+        <span class="trust-icon">
+            <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </span>
+        <div>
+            <h4>Quality Guarantee</h4>
+            <p>Premium quality products</p>
+        </div>
+    </div>
 </div>
+
+<!-- SHOP BY CATEGORY -->
+<section class="section categories">
+    <p class="section-label">Explore Our Range</p>
+    <h2 class="section-title">Shop by Category</h2>
+
+    <div class="category-grid">
+        @{
+            var categories = new[]
+            {
+                new { Title = "Men", Sub = "Performance. Redefined.", Img = "~/Images/Home/cat-men.png", Controller = "Men" },
+                new { Title = "Women", Sub = "Built for Strength.", Img = "~/Images/Home/cat-women.png", Controller = "Women" },
+                new { Title = "Accessories", Sub = "Complete Your Gear.", Img = "~/Images/Home/cat-accessories.png", Controller = "Accessories" },
+            };
+        }
+        @foreach (var cat in categories)
+        {
+            <a asp-controller="@cat.Controller" asp-action="Index" class="category-card">
+                <div data-img-wrap>
+                    <img src="@cat.Img" alt="@cat.Title" data-img-fallback />
+                    <div class="placeholder-img" style="display:none; position:absolute; inset:0;">@cat.Title</div>
+                </div>
+                <div class="category-card__info">
+                    <h3 class="category-card__title">@cat.Title</h3>
+                    <p class="category-card__sub">@cat.Sub</p>
+                    <div class="category-card__btn">
+                        <svg width="16" height="16" fill="none" stroke="white" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </div>
+                </div>
+            </a>
+        }
+    </div>
+</section>
+
+<!-- NEW ARRIVALS -->
+<section class="section new-arrivals">
+    <div class="arrivals-header">
+        <div>
+            <p class="section-label" style="text-align:left">New Drops</p>
+            <h2 class="section-title" style="text-align:left">New Arrivals</h2>
+        </div>
+        <div class="arrivals-nav">
+            <a asp-controller="Shop" asp-action="NewArrivals">View All →</a>
+            <button type="button" class="nav-arrow" data-arrivals-prev aria-label="Previous">
+                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            </button>
+            <button type="button" class="nav-arrow" data-arrivals-next aria-label="Next">
+                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+        </div>
+    </div>
+
+    <div class="product-grid" data-product-grid>
+        @{
+            var products = new[]
+            {
+                new { Name = "Performance T-Shirt", Price = "$34.99", Img = "~/images/product-tshirt.jpg" },
+                new { Name = "Athlete Hoodie", Price = "$59.99", Img = "~/images/product-hoodie.jpg" },
+                new { Name = "Training Shorts", Price = "$29.99", Img = "~/images/product-shorts.jpg" },
+                new { Name = "Performance Pants", Price = "$49.99", Img = "~/images/product-pants.jpg" },
+                new { Name = "STRYK Runners", Price = "$49.99", Img = "~/images/product-shoes.jpg" },
+            };
+        }
+        @foreach (var p in products)
+        {
+            <div class="product-card">
+                <div class="product-card__img" data-img-wrap>
+                    <img src="@p.Img" alt="@p.Name" data-img-fallback />
+                    <div class="placeholder-img" style="display:none; position:absolute; inset:0;">@p.Name</div>
+                    <button type="button" class="product-card__cart" aria-label="Add to cart">
+                        <svg width="16" height="16" fill="none" stroke="white" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                    </button>
+                </div>
+                <div class="product-card__info">
+                    <p class="product-card__name">@p.Name</p>
+                    <p class="product-card__price">@p.Price</p>
+                </div>
+            </div>
+        }
+    </div>
+</section>
+
+<!-- TECHNOLOGY -->
+<section class="section technology">
+    <div class="tech-left">
+        <p class="section-label">Built Different</p>
+        <h2 class="tech-title">Our<br>Technology</h2>
+        <p class="tech-desc">Advanced fabrics. Athletic performance.<br>Engineered for every move.</p>
+        <a asp-controller="About" asp-action="Technology" class="btn btn-outline" style="font-size:12px; padding:12px 28px;">Learn More</a>
+    </div>
+
+    <div class="tech-right">
+        <div class="tech-main-img" data-tech-img>
+            <img src="~/images/tech-fabric.jpg" alt="STRYK Fabric Technology" />
+        </div>
+
+        @{
+            var techFeatures = new[]
+            {
+                new { Icon = "💧", Title = "Moisture Wicking", Desc = "Stay dry. Stay focused." },
+                new { Icon = "✦", Title = "4-Way Stretch", Desc = "Move freely. No limits." },
+                new { Icon = "🌬", Title = "Breathable Fabric", Desc = "Cool comfort. All day." },
+                new { Icon = "🛡", Title = "Durable Quality", Desc = "Built to last. Every time." },
+            };
+        }
+        @foreach (var f in techFeatures)
+        {
+            <div class="tech-feature">
+                <div class="tech-feature__icon">@f.Icon</div>
+                <h4 class="tech-feature__title">@f.Title</h4>
+                <p class="tech-feature__desc">@f.Desc</p>
+            </div>
+        }
+    </div>
+</section>
+
+<!-- COMMUNITY -->
+<section class="community">
+    <div class="community-left">
+        <p class="section-label">Be Part of the Movement</p>
+        <h2 class="community-title">Join The<br>Community</h2>
+        <p class="community-sub">Tag @@stryk.official to get featured and inspire others.</p>
+        <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="btn-social">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            Follow Us
+        </a>
+    </div>
+
+    <div class="community-grid">
+        @for (int i = 1; i <= 8; i++)
+        {
+            <div class="community-img" data-img-wrap>
+                <img src="~/images/community-@(i).jpg" alt="Community Photo @i" data-img-fallback />
+                <div class="placeholder-img" style="display:none; position:absolute; inset:0;"></div>
+                <span class="community-img__icon">
+                    <svg width="16" height="16" fill="white" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke="white" stroke-width="2"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" fill="none" stroke="white" stroke-width="2"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke="white" stroke-width="2"/></svg>
+                </span>
+            </div>
+        }
+    </div>
+</section>
+
+@section Scripts {
+    <script src="~/js/home.js" asp-append-version="true"></script>
+}
