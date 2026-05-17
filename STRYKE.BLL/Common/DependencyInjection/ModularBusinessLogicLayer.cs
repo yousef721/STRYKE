@@ -1,4 +1,4 @@
-namespace STRYKE.BLL.DependencyInjection;
+namespace STRYKE.BLL.Common.DependencyInjection;
 
 public static class ModularBusinessLogicLayer
 {
@@ -6,11 +6,12 @@ public static class ModularBusinessLogicLayer
         this IServiceCollection services)
     {
         // SERVICES
-        services.AddScoped<IHomeServices, HomeServices>();
-
         services.AddScoped<IProductServices, ProductServices>();
 
         services.AddScoped<ICategoryServices, CategoryServices>();
+
+        // MAPPER
+        services.AddAutoMapper(x => x.AddProfile(new DomainProfile()));
 
         return services;
     }

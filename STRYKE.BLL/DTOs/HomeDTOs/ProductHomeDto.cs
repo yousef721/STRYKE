@@ -1,6 +1,6 @@
 namespace STRYKE.BLL.ViewModel.Home;
 
-public class ProductHomeVM
+public class ProductHomeDto
 {
     public string? Slug { get; set; }
     public string Name { get; set; } = null!;

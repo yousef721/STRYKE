@@ -1,4 +1,3 @@
-
 namespace STRYKE.DAL.Repository.Implementation.SpecificRepository;
 
 public class ProductRepository : GenericRepository<Product>, IProductRepository

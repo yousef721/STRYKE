@@ -1,6 +1,6 @@
 namespace STRYKE.BLL.ViewModel.Home;
 
-public class CategoryHomeVM
+public class CategoryHomeDto
 {
     public int Id { get; set; }
     public string Name { get; set; } = null!;

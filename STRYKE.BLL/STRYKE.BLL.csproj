@@ -8,16 +8,6 @@
 
   <ItemGroup>
     <Folder Include="Helper/" />
-    <Folder Include="Mapper/" />
-    <Folder Include="ViewModel/AddressVM/" />
-    <Folder Include="ViewModel/CartVM/" />
-    <Folder Include="ViewModel/CustomerVM/" />
-    <Folder Include="ViewModel/OrderVM/" />
-    <Folder Include="ViewModel/PaymentVM/" />
-    <Folder Include="ViewModel/ProductVM/BrandVM/" />
-    <Folder Include="ViewModel/ProductVM/CategoryVM/" />
-    <Folder Include="ViewModel/ReviewVM/" />
-    <Folder Include="ViewModel/WishlistVM/" />
   </ItemGroup>
 
   <ItemGroup>
@@ -25,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="1.1.0.118" />
+    <PackageReference Include="AutoMapper" Version="16.1.1" />
   </ItemGroup>
 
 </Project>
