@@ -2,7 +2,7 @@ global using STRYKE.DAL.Enum;
 global using Microsoft.EntityFrameworkCore;
 global using STRYKE.DAL.Entity;
 global using Microsoft.EntityFrameworkCore.Metadata.Builders;
-global using STRYKE.DAL.Repository.Interface;
+global using STRYKE.DAL.Repository.Interface.GenericRepository;
 global using STRYKE.DAL.Repository.Interface.SpecificRepository;
 global using STRYKE.DAL.Repository.Implementation.GenericRepository;
 global using STRYKE.DAL.Database;

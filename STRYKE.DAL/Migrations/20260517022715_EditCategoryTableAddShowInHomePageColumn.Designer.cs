@@ -12,8 +12,8 @@ using STRYKE.DAL.Database;
 namespace STRYKE.DAL.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20260517022715_EditCategoryTableAddShowInHomePageCulomn")]
-    partial class EditCategoryTableAddShowInHomePageCulomn
+    [Migration("20260517022715_EditCategoryTableAddShowInHomePageColumn")]
+    partial class EditCategoryTableAddShowInHomePageColumn
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

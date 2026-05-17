@@ -1,4 +1,4 @@
-namespace STRYKE.BLL.ViewModel.Home;
+namespace STRYKE.BLL.DTOs.HomeDTOs;
 
 public class HomeDto
 {

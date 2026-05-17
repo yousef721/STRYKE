@@ -1,6 +1,6 @@
-namespace STRYKE.BLL.DTOs.HomeDTOs;
+namespace STRYKE.ViewModels.HomeVM;
 
-public class CategoryHomeDto
+public class CategoryVM
 {
     public int Id { get; set; }
     public string Name { get; set; } = null!;

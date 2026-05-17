@@ -4,7 +4,7 @@ public class DomainProfile : Profile
 {
     public DomainProfile()
     {
-        CreateMap<Category, CategoryHomeVM>().ReverseMap();
-        CreateMap<Product, ProductHomeVM>().ReverseMap();
+        CreateMap<Category, CategoryHomeDto>().ReverseMap();
+        CreateMap<Product, ProductHomeDto>().ReverseMap();
     }
 }

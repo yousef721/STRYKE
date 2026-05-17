@@ -5,7 +5,7 @@
 namespace STRYKE.DAL.Migrations
 {
     /// <inheritdoc />
-    public partial class EditCategoryTableAddShowInHomePageCulomn : Migration
+    public partial class EditCategoryTableAddShowInHomePageColumn : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

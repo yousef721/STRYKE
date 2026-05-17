@@ -1,4 +1,4 @@
-namespace STRYKE.DAL.Repository.Interface;
+namespace STRYKE.DAL.Repository.Interface.GenericRepository;
 
 public interface IGenericRepository<T> where T : class
 {

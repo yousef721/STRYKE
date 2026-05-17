@@ -1,6 +1,6 @@
 global using STRYKE.BLL.Services.Interface;
-global using STRYKE.BLL.ViewModel.Home;
-global using STRYKE.DAL.Repository.Interface;
+global using STRYKE.BLL.DTOs.HomeDTOs;
+global using STRYKE.DAL.Repository.Interface.GenericRepository;
 global using Microsoft.Extensions.DependencyInjection;
 global using STRYKE.BLL.Services.Implementation;
 global using STRYKE.DAL.Entity;

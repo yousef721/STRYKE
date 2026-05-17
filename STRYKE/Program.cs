@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using STRYKE.BLL.DependencyInjection;
+using STRYKE.BLL.Common.DependencyInjection;
 using STRYKE.DAL.Database;
 using STRYKE.DAL.DependencyInjection;
 
