@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
+using STRYKE.BLL.DependencyInjection;
 using STRYKE.DAL.Database;
-using STRYKE.DAL.Repository.Implementation.GenericRepository;
-using STRYKE.DAL.Repository.Interface;
+using STRYKE.DAL.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,7 +11,9 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ApplicationDbContext>(
     options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
 );
-builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+builder.Services.AddBusinessLayerInDAL();
+builder.Services.AddBusinessLayerInBLL();
 
 var app = builder.Build();
 

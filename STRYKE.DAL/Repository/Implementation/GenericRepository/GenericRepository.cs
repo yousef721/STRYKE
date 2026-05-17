@@ -11,54 +11,50 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class
         _dbSet = _context.Set<T>();
     }
 
+    protected IQueryable<T> BuildQuery(
+        Expression<Func<T, bool>>? filter = null,
+        Func<IQueryable<T>, IQueryable<T>>? include = null,
+        bool tracked = true)
+    {
+        IQueryable<T> query = _dbSet;
+
+        // Filter
+        if (filter != null)
+            query = query.Where(filter);
+
+        // Include
+        if (include != null)
+            query = include(query);
+
+        // Tracking
+        if (!tracked)
+            query = query.AsNoTracking();
+
+        return query;
+    }
+
     public async Task<T?> GetByIdAsync(int id)
     {
         return await _dbSet.FindAsync(id);
     }
+
     public async Task<List<T>> GetAllAsync(
         Expression<Func<T, bool>>? filter = null,
-        Expression<Func<T, object>>[]? includeProps = null,
+        Func<IQueryable<T>, IQueryable<T>>? include = null,
         bool tracked = true)
     {
-        IQueryable<T> query = _dbSet;
-
-        if (filter != null)
-            query = query.Where(filter);
-
-        if (includeProps != null)
-        {
-            foreach (var prop in includeProps)
-                query = query.Include(prop);
-        }
-
-        if (!tracked)
-            query = query.AsNoTracking();
-
-        return await query.ToListAsync();
+        return await BuildQuery(filter, include, tracked)
+            .ToListAsync();
     }
 
     public async Task<T?> GetOneAsync(
         Expression<Func<T, bool>>? filter = null,
-        Expression<Func<T, object>>[]? includeProps = null,
+        Func<IQueryable<T>, IQueryable<T>>? include = null,
         bool tracked = true)
     {
-        IQueryable<T> query = _dbSet;
-
-        if (filter != null)
-            query = query.Where(filter);
-
-        if (includeProps != null)
-        {
-            foreach (var prop in includeProps)
-                query = query.Include(prop);
-        }
-
-        if (!tracked)
-            query = query.AsNoTracking();
-
-        return await query.FirstOrDefaultAsync();
+        return await BuildQuery(filter, include, tracked)
+            .FirstOrDefaultAsync();
     }
-
 
     public async Task<T> AddAsync(T entity)
     {
@@ -74,10 +70,5 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class
     public void Delete(T entity)
     {
         _dbSet.Remove(entity);
-    }
-
-    public Task<IReadOnlyList<T>> GetAllAsync()
-    {
-        throw new NotImplementedException();
     }
 }

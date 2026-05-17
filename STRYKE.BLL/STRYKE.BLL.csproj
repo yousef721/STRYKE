@@ -16,13 +16,16 @@
     <Folder Include="ViewModel/PaymentVM/" />
     <Folder Include="ViewModel/ProductVM/BrandVM/" />
     <Folder Include="ViewModel/ProductVM/CategoryVM/" />
-    <Folder Include="ViewModel/ResponseResult/" />
     <Folder Include="ViewModel/ReviewVM/" />
     <Folder Include="ViewModel/WishlistVM/" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="../STRYKE.DAL/STRYKE.DAL.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="1.1.0.118" />
   </ItemGroup>
 
 </Project>

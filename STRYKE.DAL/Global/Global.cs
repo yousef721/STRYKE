@@ -8,3 +8,4 @@ global using STRYKE.DAL.Repository.Implementation.GenericRepository;
 global using STRYKE.DAL.Database;
 global using STRYKE.DAL.Repository.Implementation.SpecificRepository;
 global using System.Linq.Expressions;
+global using Microsoft.Extensions.DependencyInjection;

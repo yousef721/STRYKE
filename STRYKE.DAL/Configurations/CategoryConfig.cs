@@ -13,9 +13,19 @@ public class CategoryConfig : IEntityTypeConfiguration<Category>
 
         builder.Property(x => x.Image)
             .HasMaxLength(500);
+        
+        builder.Property(x => x.Slug)
+            .IsRequired()
+            .HasMaxLength(150);
+
+        builder.Property(c => c.Description)
+            .HasMaxLength(1000);
 
         // Indexes
         builder.HasIndex(x => x.Name)
+            .IsUnique();
+
+        builder.HasIndex(x => x.Slug)
             .IsUnique();
 
         // Constraints
