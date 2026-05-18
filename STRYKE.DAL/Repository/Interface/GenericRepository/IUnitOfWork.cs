@@ -21,5 +21,12 @@ public interface IUnitOfWork : IDisposable
     ISizeRepository SizeRepository { get; }
     IWishlistRepository WishlistRepository { get; }
     IWishlistItemRepository WishlistItemRepository { get; }
-    Task<int> CompleteAsync();
+
+    Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
+
+    Task BeginTransactionAsync();
+
+    Task CommitAsync();
+
+    Task RollbackAsync();
 }

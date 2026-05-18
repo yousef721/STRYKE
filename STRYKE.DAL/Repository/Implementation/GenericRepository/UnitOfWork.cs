@@ -47,13 +47,19 @@ public class UnitOfWork : IUnitOfWork
         WishlistRepository = new WishlistRepository(context);
         WishlistItemRepository = new WishlistItemRepository(context);
     }
-    public async Task<int> CompleteAsync()
-    {
-       return await _context.SaveChangesAsync();
-    }
+
+    public async Task<int> SaveChangesAsync(CancellationToken ct = default)
+        => await _context.SaveChangesAsync(ct);
+
+    public async Task BeginTransactionAsync()
+        => await _context.Database.BeginTransactionAsync();
+
+    public async Task CommitAsync()
+        => await _context.Database.CommitTransactionAsync();
+
+    public async Task RollbackAsync()
+        => await _context.Database.RollbackTransactionAsync();
 
     public void Dispose()
-    {
-        _context.Dispose();
-    }
+        => _context.Dispose();
 }

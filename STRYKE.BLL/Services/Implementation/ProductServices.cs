@@ -1,3 +1,4 @@
+
 namespace STRYKE.BLL.Services.Implementation;
 
 public class ProductServices : IProductServices
@@ -9,15 +10,15 @@ public class ProductServices : IProductServices
         _unitOfWork = unitOfWork;
         _mapper = mapper;
     }
-    public async Task<ResponseResult<ProductHomeDto>> GetNewProducts()
+    public async Task<ResponseResult<List<ProductHomeDto>>> GetNewProductsAsync(int count = 8)
     {
-        var products = await _unitOfWork.ProductRepository.GetNewProducts(p => p.Include(p => p.Variants).Include(p => p.Images));
+        var products = await _unitOfWork.ProductRepository.GetNewProductsAsync(count, include: p => p.Include(p => p.Images).Include(p => p.Variants));
 
         if (products == null || !products.Any())
-            return ResponseResult<ProductHomeDto>.NotFound("No products found");
+            return ResponseResult<List<ProductHomeDto>>.NotFound("No products found");
 
-        var productsVM = _mapper.Map<ProductHomeDto>(products);
+        var productsDto = _mapper.Map<List<ProductHomeDto>>(products);
 
-        return ResponseResult<ProductHomeDto>.Success(productsVM);
+        return ResponseResult<List<ProductHomeDto>>.Success(productsDto);
     }
 }

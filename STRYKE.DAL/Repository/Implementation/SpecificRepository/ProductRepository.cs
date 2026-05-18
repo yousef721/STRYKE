@@ -5,12 +5,11 @@ public class ProductRepository : GenericRepository<Product>, IProductRepository
     public ProductRepository(ApplicationDbContext context) : base(context)
     {
     }
-
-    public async Task<List<Product>> GetNewProducts(Func<IQueryable<Product>, IQueryable<Product>>? include = null, int count = 8)
+    public async Task<IEnumerable<Product>> GetNewProductsAsync(int count, Func<IQueryable<Product>, IQueryable<Product>>? include = null, bool tracked = false)
     {
         return await BuildQuery(
                 include: include,
-                tracked: false
+                tracked: tracked
             )
             .OrderByDescending(p => p.CreatedAt)
             .Take(count)

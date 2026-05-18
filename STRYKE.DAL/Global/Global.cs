@@ -7,5 +7,7 @@ global using STRYKE.DAL.Repository.Interface.SpecificRepository;
 global using STRYKE.DAL.Repository.Implementation.GenericRepository;
 global using STRYKE.DAL.Database;
 global using STRYKE.DAL.Repository.Implementation.SpecificRepository;
+global using STRYKE.DAL.Repository.Interfaces.GenericRepository;
 global using System.Linq.Expressions;
 global using Microsoft.Extensions.DependencyInjection;
+global using STRYKE.DAL.Common;
